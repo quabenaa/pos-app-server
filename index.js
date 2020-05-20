@@ -1,7 +1,7 @@
 const server = require('./services/server');
 const log = console.log;
 
-const startApplication = () => {
+const startServer = () => {
   try {
     log('**** Initializing web server ****');
     server.init();
@@ -11,4 +11,4 @@ const startApplication = () => {
   }
 };
 
-startApplication();
+startServer();
