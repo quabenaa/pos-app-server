@@ -3,7 +3,7 @@ const log = console.log;
 
 const startApplication = () => {
   try {
-    log('*** Initializing web server ***');
+    log('**** Initializing web server ****');
     server.init();
   } catch (error) {
     console.error(error);
