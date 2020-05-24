@@ -8,6 +8,8 @@ const color = require('../utils').color;
 
 //Import routes
 const users = require('../routes/users');
+const inventory = require('../routes/users');
+const sales = require('../routes/users');
 
 //Global Constants
 const log = console.log;
@@ -34,6 +36,8 @@ const init = () => {
    */
   //Users Route
   app.use('/api/user', users);
+  app.use('/api/inventory', inventory);
+  app.use('/api/sales', sales);
 
   //Starting the Listener
   app.listen(port, () => {
