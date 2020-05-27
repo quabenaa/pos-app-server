@@ -7,7 +7,14 @@ const jwt = require('jsonwebtoken');
 const passport = require('passport');
 
 // Load User define details
-const UsersController = require('../database/controllers/users');
+const {
+  register,
+  login,
+  update,
+  deactivate,
+  query,
+  queryOne,
+} = require('../database/controllers/users');
 
 /**
  * @route POST api/users/register
@@ -15,7 +22,7 @@ const UsersController = require('../database/controllers/users');
  * @access Public
  *
  */
-router.post('/register', [UsersController.register]);
+router.post('/register', [register]);
 
 /**
  * @route POST api/users/login
@@ -23,7 +30,7 @@ router.post('/register', [UsersController.register]);
  * @access Public
  *
  */
-router.post('/login', [UsersController.login]);
+router.post('/login', [login]);
 
 /**
  * @route POST api/users/update
@@ -31,7 +38,7 @@ router.post('/login', [UsersController.login]);
  * @access Public
  *
  */
-router.post('/update', [UsersController.update]);
+router.post('/update', [update]);
 
 /**
  * @route POST api/users/deactivate
@@ -39,7 +46,7 @@ router.post('/update', [UsersController.update]);
  * @access Public
  *
  */
-router.post('/deactivate', [UsersController.deactivate]);
+router.post('/deactivate', [deactivate]);
 
 /**
  * @route GET api/users/query
@@ -47,9 +54,7 @@ router.post('/deactivate', [UsersController.deactivate]);
  * @access Public
  *
  */
-router.get('/query', passport.authenticate('jwt', { session: false }), [
-  UsersController.query,
-]);
+router.get('/query', passport.authenticate('jwt', { session: false }), [query]);
 
 /**
  * @route GET api/users/query
@@ -58,7 +63,7 @@ router.get('/query', passport.authenticate('jwt', { session: false }), [
  *
  */
 router.get('/query/:id', passport.authenticate('jwt', { session: false }), [
-  UsersController.queryOne,
+  queryOne,
 ]);
 
 module.exports = router;
